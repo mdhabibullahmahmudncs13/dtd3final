@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .quiz-container {
+            max-width: 600px;
+            margin: auto;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .question h3 {
+            margin-bottom: 10px;
+        }
+        .options label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .submit-btn {
+            display: block;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Quiz</h1>
+        <form id="quiz-form">
+            <div class="question">
+                <h3>1. Question 1?</h3>
+                <div class="options">
+                    <label><input type="radio" name="q1" value="a"> Option A</label>
+                    <label><input type="radio" name="q1" value="b"> Option B</label>
+                    <label><input type="radio" name="q1" value="c"> Option C</label>
+                    <label><input type="radio" name="q1" value="d"> Option D</label>
+                </div>
+            </div>
+            <div class="question">
+                <h3>2. Question 2?</h3>
+                <div class="options">
+                    <label><input type="radio" name="q2" value="a"> Option A</label>
+                    <label><input type="radio" name="q2" value="b"> Option B</label>
+                    <label><input type="radio" name="q2" value="c"> Option C</label>
+                    <label><input type="radio" name="q2" value="d"> Option D</label>
+                </div>
+            </div>
+            <!-- Add more questions here in the same format -->
+            <div class="question">
+                <h3>10. Question 10?</h3>
+                <div class="options">
+                    <label><input type="radio" name="q10" value="a"> Option A</label>
+                    <label><input type="radio" name="q10" value="b"> Option B</label>
+                    <label><input type="radio" name="q10" value="c"> Option C</label>
+                    <label><input type="radio" name="q10" value="d"> Option D</label>
+                </div>
+            </div>
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('quiz-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Quiz submitted!');
+        });
+    </script>
+</body>
+</html>
