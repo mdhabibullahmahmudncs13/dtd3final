@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 50%;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Leaderboard</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Team</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody id="leaderboard">
+            <!-- Scores will be populated here -->
+        </tbody>
+    </table>
+
+    <script>
+        const teams = 20;
+        const leaderboard = document.getElementById('leaderboard');
+
+        for (let i = 1; i <= teams; i++) {
+            fetch(`team${i}.html`)
+                .then(response => response.text())
+                .then(data => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(data, 'text/html');
+                    const score = doc.querySelector('.score').textContent;
+
+                    const row = document.createElement('tr');
+                    const teamCell = document.createElement('td');
+                    const scoreCell = document.createElement('td');
+
+                    teamCell.textContent = `Team ${i}`;
+                    scoreCell.textContent = score;
+
+                    row.appendChild(teamCell);
+                    row.appendChild(scoreCell);
+                    leaderboard.appendChild(row);
+                })
+                .catch(error => console.error('Error fetching team score:', error));
+        }
+    </script>
+</body>
+</html>
