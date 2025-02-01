@@ -5,41 +5,36 @@ body {
     padding: 0;
     color: white;
 }
-
 .qa {
     margin-bottom: 20px;
 }
-
 .question {
     font-weight: bold;
 }
-
 .answer {
     margin-top: 10px;
 }
-
 .error {
-    color: red;
+    color: rgb(249, 5, 5);
     display: none;
 }
-
-.qa, .team {
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 20px;
-    border-radius: 5px;
+#scoreForm {
     margin: 20px;
 }
-
-.button {
+label {
+    margin-right: 10px;
+}
+input {
+    padding: 5px;
+    margin: 10px 0;
+}
+button {
+    padding: 10px 20px;
     background-color: #4CAF50;
     color: white;
     border: none;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin-top: 10px;
-    border-radius: 5px;
     cursor: pointer;
+}
+button:hover {
+    background-color: #45a049;
 }
