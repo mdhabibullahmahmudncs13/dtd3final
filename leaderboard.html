@@ -7,61 +7,82 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-        }
-        table {
-            width: 50%;
-            margin: 0 auto;
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
+            background-color: #f4f4f9;
             text-align: center;
         }
-        th {
+
+        #leaderboard {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        #leaderboard th, #leaderboard td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        #leaderboard th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        #leaderboard tr:nth-child(even) {
             background-color: #f2f2f2;
+        }
+
+        #leaderboard tr:hover {
+            background-color: #ddd;
         }
     </style>
 </head>
 <body>
-    <h1 style="text-align: center;">Leaderboard</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Team</th>
-                <th>Score</th>
-            </tr>
-        </thead>
-        <tbody id="leaderboard">
-            <!-- Scores will be populated here -->
-        </tbody>
-    </table>
+    <h1>Leaderboard</h1>
+    <table id="leaderboard"></table>
 
     <script>
-        const teams = 20;
-        const leaderboard = document.getElementById('leaderboard');
+        let scores = {
+            1: 0,
+            2: 0,
+            3: 0,
+            4: 0,
+            5: 0,
+            6: 0,
+            7: 0,
+            8: 0,
+            9: 0,
+            10: 0,
+            11: 0,
+            12: 0,
+            13: 0,
+            14: 0,
+            15: 0,
+            16: 0,
+            17: 0,
+            18: 0,
+            19: 0,
+            20: 0
+        };
 
-        for (let i = 1; i <= teams; i++) {
-            fetch(`team${i}.html`)
-                .then(response => response.text())
-                .then(data => {
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(data, 'text/html');
-                    const score = doc.querySelector('.score').textContent;
+        function loadLeaderboard() {
+            let storedScores = localStorage.getItem("scores");
+            if (storedScores) {
+                scores = JSON.parse(storedScores);
+            }
 
-                    const row = document.createElement('tr');
-                    const teamCell = document.createElement('td');
-                    const scoreCell = document.createElement('td');
+            let table = document.getElementById("leaderboard");
+            table.innerHTML = `<tr><th>Rank</th><th>Team Name</th><th>Score</th></tr>`; // Adding headers
+            let sortedTeams = Object.entries(scores).sort((a, b) => b[1] - a[1]);
 
-                    teamCell.textContent = `Team ${i}`;
-                    scoreCell.textContent = score;
-
-                    row.appendChild(teamCell);
-                    row.appendChild(scoreCell);
-                    leaderboard.appendChild(row);
-                })
-                .catch(error => console.error('Error fetching team score:', error));
+            sortedTeams.forEach((team, index) => {
+                let row = table.insertRow();
+                row.insertCell(0).innerText = index + 1;
+                row.insertCell(1).innerText = `Team ${team[0]}`;
+                row.insertCell(2).innerText = team[1];
+            });
         }
+
+        window.onload = loadLeaderboard;  // Load leaderboard on page load
     </script>
 </body>
 </html>
