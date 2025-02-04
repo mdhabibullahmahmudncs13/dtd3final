@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Leader Page</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #4CAF50; }
+        .message { background-color: #f1f1f1; padding: 15px; border: 1px solid #ccc; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Team Leader Page</h1>
+    <h3>Message from Admin:</h3>
+    <div class="message" id="messageDisplay">
+        <!-- The message from Admin will appear here -->
+        No new messages.
+    </div>
+
+    <script>
+        // Retrieve and display the message from localStorage
+        const message = localStorage.getItem('adminMessage');
+        const messageDisplay = document.getElementById('messageDisplay');
+
+        if (message) {
+            messageDisplay.textContent = message; // Display the admin's message
+        } else {
+            messageDisplay.textContent = "No new messages."; // Default if no message is found
+        }
+    </script>
+</body>
+</html>

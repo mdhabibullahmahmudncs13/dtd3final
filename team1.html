@@ -48,7 +48,7 @@
     </style>
 </head>
 <body>
-    <center><h1>Hey BytePhantom Find your way</h1></center>
+    <center><h1>Hey ShadowCipher Find your way</h1></center>
     <div style="background-color:#dddddd1e; padding: 20px; border-radius: 5px; margin: 20px;">
         <div id="error" class="error"></div>
         <div id="score" style="text-align: center; margin-top: 20px;">Score: 0</div>
@@ -61,24 +61,61 @@
             <p>You are in a room with two doors—one leads to freedom, the other to death. Two guards stand by, one always tells the truth, the other always lies. You can ask only one question to one guard. What do you ask to find the safe door?</p>
             <textarea class="answer" rows="4" cols="50" placeholder="Type your answer here..." style="background-color: rgba(255, 255, 255, 0.8); color: black; border: 1px solid #ccc; border-radius: 4px; padding: 10px; width: 100%; max-width: 500px;"></textarea><br>
             <button type="button" onclick="checkAnswer(0, 'opposite', this)" style="background-color: #4CAF50; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin-top: 10px; border-radius: 5px; cursor: pointer;">Submit</button>
+            <button type="button" onclick="sendHint(1)" style="background-color: #FFA500; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin-top: 10px; border-radius: 5px; cursor: pointer;">Hint</button>
         </div>
+
+        <script>
+            function sendHint(questionNumber) {
+            const webhookUrl = 'https://discordapp.com/api/webhooks/1336148411031752785/IH3T8WO80Zh6UeiDgKkupZCZE4qnL6uxNv6G5ZhF1r-NBwZ1yn0vSiXQiYM22DKD2zHc';
+            const hints = {
+                1: 'Hint requested for question 1: Think about what each guard would say about the other guard\'s door.',
+                2: 'Hint requested for question 2: Consider the relationship between the digits.',
+                3: 'Hint requested for question 3: Think about dividing the coins into groups.',
+                4: 'Hint requested for question 4: Consider the state of the bulb after switching.'
+            };
+            const message = {
+                content: hints[questionNumber]
+            };
+
+            fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(message)
+            }).then(response => {
+                if (response.ok) {
+                alert('Hint sent to Discord!');
+                } else {
+                alert('Failed to send hint.');
+                }
+            }).catch(error => {
+                console.error('Error:', error);
+                alert('Error sending hint.');
+            });
+            }
+        </script>
+        
         <div class="qa" style="background-color: rgba(0, 0, 0, 0.5); padding: 20px; border-radius: 5px; margin: 20px ;">
             <p class="question">2. The Logical Numbers</p>
             <p>I am a three-digit number. My tens digit is five more than my ones digit, and my hundreds digit is eight less than my tens digit. What number am I?</p>
             <textarea class="answer" rows="4" cols="50" placeholder="Type your answer here..." style="background-color: rgba(255, 255, 255, 0.8); color: black; border: 1px solid #ccc; border-radius: 4px; padding: 10px; width: 100%; max-width: 500px;"></textarea><br>
             <button type="button" onclick="checkAnswer(1, '194', this)" style="background-color: #4CAF50; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin-top: 10px; border-radius: 5px; cursor: pointer;">Submit</button>
+            <button type="button" onclick="sendHint(2)" style="background-color: #FFA500; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin-top: 10px; border-radius: 5px; cursor: pointer;">Hint</button>
         </div>
         <div class="qa" style="background-color: rgba(0, 0, 0, 0.5); padding: 20px; border-radius: 5px; margin: 20px ;">
             <p class="question">3. The Counterfeit Coin</p>
             <p>You have 9 coins, one is slightly heavier. Using a balance scale, what is the minimum number of weighings required to find the counterfeit?</p>
             <textarea class="answer" rows="4" cols="50" placeholder="Type your answer here..." style="background-color: rgba(255, 255, 255, 0.8); color: black; border: 1px solid #ccc; border-radius: 4px; padding: 10px; width: 100%; max-width: 500px;"></textarea><br>
             <button type="button" onclick="checkAnswer(2, '2', this)" style="background-color: #4CAF50; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin-top: 10px; border-radius: 5px; cursor: pointer;">Submit</button>
+            <button type="button" onclick="sendHint(3)" style="background-color: #FFA500; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin-top: 10px; border-radius: 5px; cursor: pointer;">Hint</button>
         </div>
         <div class="qa" style="background-color: rgba(0, 0, 0, 0.5); padding: 20px; border-radius: 5px; margin: 20px ;">
             <p class="question">4. The Two Switches Problem</p>
             <p>You have two light switches, but only one controls a bulb in another room. You can enter the room only once. How do you determine the correct switch?</p>
             <textarea class="answer" rows="4" cols="50" placeholder="Type your answer here..." style="background-color: rgba(255, 255, 255, 0.8); color: black; border: 1px solid #ccc; border-radius: 4px; padding: 10px; width: 100%; max-width: 500px;"></textarea><br>
             <button type="button" onclick="checkAnswer(3, 'warm', this)" style="background-color: #4CAF50; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin-top: 10px; border-radius: 5px; cursor: pointer;">Submit</button>
+            <button type="button" onclick="sendHint(4)" style="background-color: #FFA500; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin-top: 10px; border-radius: 5px; cursor: pointer;">Hint</button>
         </div>
         </center>
     </form>
@@ -105,7 +142,7 @@
             17: 0,
             18: 0,
             19: 0,
-            20: 0
+            20: 0,
         };
 
         function checkAnswer(index, correctAnswer, button) {
@@ -129,7 +166,7 @@
         }
 
         function updateScore() {
-            scores[2] = score; // Update score for Team 1
+            scores[1] = score; // Update score for Team 1
             localStorage.setItem("scores", JSON.stringify(scores));
             alert("Score updated for Team 1");
         }
