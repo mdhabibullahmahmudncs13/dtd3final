@@ -5,13 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Team Leader Page</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
+        body { font-family: Arial, sans-serif; margin: 20px; text-align: center; }
         h1 { color: #4CAF50; }
-        .message { background-color: #f1f1f1; padding: 15px; border: 1px solid #ccc; border-radius: 5px; }
+        .message { background-color: #f1f1f1; padding: 15px; border: 1px solid #ccc; border-radius: 5px; display: inline-block; }
+        .container { display: inline-block; text-align: left; }
     </style>
 </head>
 <body>
     <h1>Team Leader Page</h1>
+    <div style="background-color: rgba(240, 240, 240, 0.3); padding: 20px; border-radius: 5px; display: inline-block; text-align: left;">
+        <div id="team-container"></div>
+    </div>
+    <script>
+        const teamContainer = document.getElementById('team-container');
+        const teamName = "Heart Pirates"; // Set the specific team name
+        
+        const teamHTML = `
+            <div class="container">
+                <h1>${teamName}</h1>
+                <p><strong>Description:</strong> A short description of Team ${teamName}.</p>
+                <h2>Team Members</h2>
+                <ul class="team-members">
+                    <li>Member 1 - <strong>Team Leader</strong></li>
+                    <li>Member 2</li>
+                    <li>Member 3</li>
+                    <li>Member 4</li>
+                </ul>
+                <h2>Supervisor</h2>
+                <p>Supervisor Name</p>
+            </div>`;
+        
+        teamContainer.innerHTML = teamHTML;
+    </script>
     <h3>Message from Admin:</h3>
     <div class="message" id="messageDisplay">
         <!-- The message from Admin will appear here -->

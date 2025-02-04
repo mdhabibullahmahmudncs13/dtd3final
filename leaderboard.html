@@ -40,6 +40,8 @@
     <h1>Leaderboard</h1>
     <table id="leaderboard"></table>
 
+   
+
     <script>
         let scores = {
             1: 0,
@@ -71,7 +73,7 @@
             }
 
             let table = document.getElementById("leaderboard");
-            table.innerHTML = `<tr><th>Rank</th><th>Team Name</th><th>Score</th></tr>`; // Adding headers
+            table.innerHTML = `<tr><th>Rank</th><th>Team Name</th><th>Score</th><th>Correct Answers</th></tr>`; // Adding headers
             let sortedTeams = Object.entries(scores).sort((a, b) => b[1] - a[1]);
 
             sortedTeams.forEach((team, index) => {
@@ -79,10 +81,10 @@
                 row.insertCell(0).innerText = index + 1;
                 row.insertCell(1).innerText = `Team ${team[0]}`;
                 row.insertCell(2).innerText = team[1];
+                row.insertCell(3).innerText = localStorage.getItem(`correctCount${team[0]}`) || 0; // Adding correct answers
             });
         }
-
-        window.onload = loadLeaderboard;  // Load leaderboard on page load
+        loadLeaderboard();
     </script>
 </body>
 </html>

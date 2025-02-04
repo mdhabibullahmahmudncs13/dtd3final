@@ -171,5 +171,31 @@
             alert("Score updated for Team 1");
         }
         </script>
+
+        <script>
+            function countCorrectAnswers() {
+                let correctCount = 0;
+                const answers = document.querySelectorAll('.answer');
+                answers.forEach(answer => {
+                    if (answer.disabled && answer.style.backgroundColor === 'green') {
+                        correctCount++;
+                    }
+                });
+                localStorage.setItem("correctCount", correctCount);
+                alert(`You have correctly answered ${correctCount} questions.`);
+            }
+        </script>
+        
+        
+        <button onclick="finishQuiz()">Finish Quiz</button>
+
+    <script>
+        function finishQuiz() {
+            let correctCount = 5; // Example count (replace with actual logic)
+            localStorage.setItem("correctCount", correctCount);
+            window.location.href = "leaderboard.html"; // Redirect to result page
+        }
+        </script>
+        
 </body>
 </html>
