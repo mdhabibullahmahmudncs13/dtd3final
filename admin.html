@@ -10,6 +10,30 @@
         textarea { width: 100%; height: 150px; }
         button { padding: 10px 20px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
         button:hover { background-color: #45a049; }
+        body {
+            background: linear-gradient(to right,#400040, #680168,#7d017d, #680168,#400040);
+            background: linear-gradient(45deg,rgb(161, 0, 179) ,rgb(97, 0, 208),rgb(161, 0, 179) , rgb(161, 0, 179) ,rgb(97, 0, 208),rgb(161, 0, 179) ,rgb(161, 0, 179) ,rgb(97, 0, 208),rgb(161, 0, 179) );
+            background-size: 400% 100%;      
+            animation: moving-grad 15s ease infinite;
+        }
+
+        .boody-grad {
+            background: linear-gradient(45deg, #333); 
+            background-size: 20% 20%;  
+            animation: moving-grad ease delay infinite alternate-reverse;
+        }
+        @keyframes moving-grad {
+            0% {
+                background-position: 0% 0%;
+            }
+            50% {
+                background-position: 100% 100%; 
+            }
+            100% {
+                background-position: 0% 0%;
+            }
+        }
+        
 
         .container {
             max-width: 362px;
@@ -38,18 +62,18 @@
 </head>
 <body>
     <h1 style="text-align: center;">Admin Page</h1>
-    <div style="background-color: #f0f0f0; padding: 20px; border-radius: 5px;">
+    <div style="background-color: rgba(240, 240, 240, 0.3); padding: 20px; border-radius: 5px;">
         <div id="teams-container"></div>
     </div>
     <script>
         const teamsContainer = document.getElementById('teams-container');
         const teamNames = [
-            "Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Golf", "Hotel", "India", "Juliet",
-            "Kilo", "Lima", "Mike", "November", "Oscar", "Papa", "Quebec", "Romeo", "Sierra", "Tango"
+            "Heart Pirates", "Rogers's Crew", "Beast Pirates", "MADS Crew", "Scholars of Ohara", "Warriors of Elbaf", "Guardians of Grandline", "East Blue Pirates", "West Blue Pirates", "North Blue Pirates", 
+            "South Blue Pirates", "Vikings Crew", "The Cross Guild", "Samurai's of Wano", "Strawhat Pirates", "The Monks", "Donquixote Pirates", "Sailors of Laughtale", "Holy Kinghts", "The Warlords"
         ];
         const teamsHTML = teamNames.map((name, i) => `
         <div class="container">
-            <h1>Team ${name}</h1>
+            <h1> ${name}</h1>
             <p><strong>Description:</strong> A short description of Team ${name}.</p>
             <h2>Team Members</h2>
             <ul class="team-members">
