@@ -12,12 +12,14 @@
         button:hover { background-color: #45a049; }
 
         .container {
-            max-width: 800px;
-            margin: 50px auto;
+            max-width: 362px;
+            margin: 20px;
             background: white;
             padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
+            display: inline-block;
+            vertical-align: top;
         }
         h1 {
             color: #333;
@@ -37,9 +39,18 @@
 <body>
     <h1 style="text-align: center;">Admin Page</h1>
     <div style="background-color: #f0f0f0; padding: 20px; border-radius: 5px;">
+        <div id="teams-container"></div>
+    </div>
+    <script>
+        const teamsContainer = document.getElementById('teams-container');
+        const teamNames = [
+            "Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Golf", "Hotel", "India", "Juliet",
+            "Kilo", "Lima", "Mike", "November", "Oscar", "Papa", "Quebec", "Romeo", "Sierra", "Tango"
+        ];
+        const teamsHTML = teamNames.map((name, i) => `
         <div class="container">
-            <h1>Team 1 Name</h1>
-            <p><strong>Description:</strong> A short description of Team 1.</p>
+            <h1>Team ${name}</h1>
+            <p><strong>Description:</strong> A short description of Team ${name}.</p>
             <h2>Team Members</h2>
             <ul class="team-members">
                 <li>Member 1 - <strong>Team Leader</strong></li>
@@ -49,50 +60,12 @@
             </ul>
             <h2>Supervisor</h2>
             <p>Supervisor Name</p>
-        </div>
-        <div class="container">
-            <h1>Team 2 Name</h1>
-            <p><strong>Description:</strong> A short description of Team 2.</p>
-            <h2>Team Members</h2>
-            <ul class="team-members">
-                <li>Member 1 - <strong>Team Leader</strong></li>
-                <li>Member 2</li>
-                <li>Member 3</li>
-                <li>Member 4</li>
-            </ul>
-            <h2>Supervisor</h2>
-            <p>Supervisor Name</p>
-        </div>
-        <div class="container">
-            <h1>Team 3 Name</h1>
-            <p><strong>Description:</strong> A short description of Team 3.</p>
-            <h2>Team Members</h2>
-            <ul class="team-members">
-                <li>Member 1 - <strong>Team Leader</strong></li>
-                <li>Member 2</li>
-                <li>Member 3</li>
-                <li>Member 4</li>
-            </ul>
-            <h2>Supervisor</h2>
-            <p>Supervisor Name</p>
-        </div>
-        <div class="container">
-            <h1>Team 4 Name</h1>
-            <p><strong>Description:</strong> A short description of Team 4.</p>
-            <h2>Team Members</h2>
-            <ul class="team-members">
-                <li>Member 1 - <strong>Team Leader</strong></li>
-                <li>Member 2</li>
-                <li>Member 3</li>
-                <li>Member 4</li>
-            </ul>
-            <h2>Supervisor</h2>
-            <p>Supervisor Name</p>
-        </div>
+        </div>`).join('');
+        teamsContainer.innerHTML = teamsHTML;
+    </script>
     <label for="message">Enter Message to Team Leader:</label>
     <textarea id="message" placeholder="Type your message here..."></textarea><br>
     <button onclick="sendMessage()">Send Message</button>
-    </div>
     <script>
         function sendMessage() {
             const message = document.getElementById('message').value;
