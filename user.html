@@ -3,34 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Page</title>
+    <title>Team Profile</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(45deg, rgb(161, 0, 179), rgb(97, 0, 208), rgb(161, 0, 179));
+            text-align: center;
+            color: white;
+        }
         .container {
-            display: flex;
-            justify-content: space-around;
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        .header {
+            background: rgba(0, 0, 0, 0.5);
             padding: 20px;
+            border-radius: 10px;
+            margin: 20px auto;
+            width: 50%;
         }
         .profile {
-            border: 1px solid #ccc;
+            background: rgba(255, 255, 255, 0.8);
             padding: 20px;
-            width: 45%;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px auto;
+            width: 50%;
+            color: black;
+        }
+        .profile img {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            margin-right: 20px;
+        }
+        .team {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .member {
+            background: white;
+            color: black;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 200px;
+        }
+        .member img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="profile" id="user-profile">
+    <div class="header">
+        <h1>Team Name</h1>
+    </div>
+    <div class="profile">
+        <img src="/asset/pfp.png" alt="Profile Picture">
+        <div>
             <h2>User Profile</h2>
             <p>Name: John Doe</p>
             <p>Email: john.doe@example.com</p>
             <p>Role: Developer</p>
         </div>
-        <div class="profile" id="team-profile">
-            <h2>Team Profile</h2>
-            <p>Team Name: Awesome Team</p>
-            <p>Project: Project X</p>
-            <p>Members: 5</p>
+    </div>
+    <div class="team">
+        <div class="member">
+            <img src="/asset/pfp.png" alt="Chris Brown">
+            <h2>Chris Brown</h2>
+            <p>Team Leader</p>
+            <p>📞 01361111111</p>
+            <p>✉ example@gmail.com</p>
+        </div>
+        <div class="member">
+            <img src="/asset/pfp.png" alt="Jane Smith">
+            <h2>Jane Smith</h2>
+            <p>Team Member</p>
+            <p>📞 01361111111</p>
+            <p>✉ example@gmail.com</p>
+        </div>
+        <div class="member">
+            <img src="/asset/pfp.png" alt="Mike Johnson">
+            <h2>Mike Johnson</h2>
+            <p>Team Member</p>
+            <p>📞 01361111111</p>
+            <p>✉ example@gmail.com</p>
+        </div>
+        <div class="member">
+            <img src="/asset/pfp.png" alt="Emily Davis">
+            <h2>Emily Davis</h2>
+            <p>Team Member</p>
+            <p>📞 01361111111</p>
+            <p>✉ example@gmail.com</p>
         </div>
     </div>
 </body>
-</html>     
+</html>
